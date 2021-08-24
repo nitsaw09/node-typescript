@@ -34,7 +34,7 @@ describe('Teams', () => {
         };
     });
     describe('Get all teams ', () => {
-        it('should return all sport teams with status 200', async () => {  
+        it('should return all sport teams with status code 200', async () => {  
             const expectedResponse = { 
                 status: 'success',
                 data: teamsData
@@ -49,7 +49,7 @@ describe('Teams', () => {
             expect(responseData).toEqual(expectedResponse);
         });
 
-        it('should throw error with status 500', async () => {
+        it('should throw error with status code 500', async () => {
             const expectedResponse = { 
                 status: 'error',
                 message: 'Something went wrong'
@@ -66,7 +66,7 @@ describe('Teams', () => {
     });
 
     describe('Get team details', () => {
-        it('should return team details with status 200', async () => {  
+        it('should return team details with status code 200', async () => {  
             const expectedResponse = { 
                 status: 'success',
                 data: teamsData.find((d: any) => d.name === params.team_name)
@@ -81,7 +81,7 @@ describe('Teams', () => {
             expect(responseData).toEqual(expectedResponse);
         });
 
-        it('should throw error with status 500', async () => {
+        it('should throw error with status code 500', async () => {
             const expectedResponse = { 
                 status: 'error',
                 message: 'Something went wrong'
@@ -98,7 +98,7 @@ describe('Teams', () => {
     });
 
     describe('Create teams', () => {
-        it('should create teams with status 200', async () => {  
+        it('should create teams with status code 200', async () => {  
             mockRequest.body = {
                 teams: [
                     {
@@ -126,7 +126,7 @@ describe('Teams', () => {
             expect(responseData).toEqual(expectedResponse);
         });
         
-        it('should throw error if team already exist with status 500', async () => {
+        it('should throw error if team already exist with status code 500', async () => {
             mockRequest.body = {
                 teams: [
                     {
@@ -150,7 +150,7 @@ describe('Teams', () => {
             expect(responseData).toEqual(expectedResponse);
         });
 
-        it('should throw error with status 500', async () => {
+        it('should throw error with status code 500', async () => {
             mockRequest.body = {
                 teams: [
                     {
@@ -180,7 +180,7 @@ describe('Teams', () => {
     });
 
     describe('Update teams', () => {
-        it('should update teams with status 200', async () => {  
+        it('should update teams with status code 200', async () => {  
             mockRequest.body = {
                 teams: [
                     {
@@ -208,7 +208,7 @@ describe('Teams', () => {
             expect(responseData).toEqual(expectedResponse);
         });
         
-        it(`should throw error if team doesn't exist with status 500`, async () => {
+        it(`should throw error if team doesn't exist with status code 500`, async () => {
             mockRequest.body = {
                 teams: [
                     {
@@ -232,7 +232,7 @@ describe('Teams', () => {
             expect(responseData).toEqual(expectedResponse);
         });
 
-        it('should throw error with status 500', async () => {
+        it('should throw error with status code 500', async () => {
             mockRequest.body = {
                 teams: [
                     {

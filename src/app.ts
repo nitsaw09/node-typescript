@@ -11,15 +11,14 @@ app.use('/teams', teamsRouter);
 
 // handling 404 error
 app.use('*', (req: Request, res: Response) => {
-    res.status(404).json({ status: 404, error: true, message: '404 Not Found' });
+    res.status(404).json({ status: 'error', message: '404 Not Found' });
 });
   
 // handling client & server error response
 app.use((error: HttpException, req: Request, res: Response, next: NextFunction) => {
     const resStatus = error.status || 500;
     res.status(resStatus).json({
-        status: resStatus,
-        error: true,
+        status: 'error',
         message: error.message
     });
     next();
