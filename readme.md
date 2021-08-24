@@ -43,6 +43,11 @@ payload
 }
 ```
 
+## Node Version
+```
+node - 14.10.0
+```
+
 ## Install dependencies
 ```
 npm i
