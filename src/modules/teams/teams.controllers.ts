@@ -7,7 +7,7 @@ export const getTeams = async (req: Request, res: Response) => {
         const data = await teamsData();
         res.statusCode = 200;
         res.send({ status: 'success', data });
-    } catch (err) {
+    } catch (err: any) {
         res.statusCode = 500;
         res.send({ status: 'error', message: err.message });
     }
@@ -20,7 +20,7 @@ export const findTeam = async (req: Request, res: Response) => {
         const data = teamData.find((d: Teams) => d.name === team_name);
         res.statusCode = 200;
         res.send({ status: 'success', data });
-    } catch (err) {
+    } catch (err: any) {
         res.statusCode = 500;
         res.send({ status: 'error', message: err.message });
     }
@@ -41,7 +41,7 @@ export const createTeams = async (req: Request, res: Response) => {
         const data = await modifyTeams(teamData);
         res.statusCode = 200;
         res.send({ status: 'success', message: 'Teams created successfully' });
-    } catch (err) {
+    } catch (err: any) {
         res.statusCode = 500;
         res.send({ status: 'error', message: err.message });
     }
@@ -64,7 +64,29 @@ export const updateTeams = async (req: Request, res: Response) => {
         await modifyTeams(teamData);
         res.statusCode = 200;
         res.send({ status: 'success', message: 'Teams updated successfully' });
-    } catch (err) {
+    } catch (err: any) {
+        res.statusCode = 500;
+        res.send({ status: 'error', message: err.message });
+    }
+};
+
+export const deleteTeams = async (req: Request, res: Response) => {
+    try { 
+        const { teams } = req.body
+        const teamData = await teamsData();
+        for (let team of teams) {
+            const index = teamData.findIndex((d: Teams) => d.name === team.name)
+            if (index !== -1) {
+                teamData.splice(index, 1);
+            } else {
+                throw new Error(`Team ${team.name} doesn't exist`);
+            }
+        }
+
+        await modifyTeams(teamData);
+        res.statusCode = 200;
+        res.send({ status: 'success', message: 'Teams deleted successfully' });
+    } catch (err: any) {
         res.statusCode = 500;
         res.send({ status: 'error', message: err.message });
     }
