@@ -11,6 +11,6 @@ teamsRouter.post("/", createTeams);
 
 teamsRouter.put("/", updateTeams);
 
-teamsRouter.put("/", deleteTeams);
+teamsRouter.delete("/", deleteTeams);
 
 export default teamsRouter;
