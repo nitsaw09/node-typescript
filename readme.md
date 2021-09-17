@@ -42,6 +42,21 @@ payload
     ]
 }
 ```
+5. Delete Teams
+```
+DELETE - http://localhost:3000/teams
+
+payload
+{
+    teams: [
+        {
+            name: 'Barcelona',
+            img: 'http://barcelona.com/img.jpg'
+        }
+    ]
+}
+```
+
 
 ## Node Version
 ```
